@@ -59,8 +59,8 @@ public class Cliente implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
-        return Objects.equals(cpfOuCnpj, cliente.cpfOuCnpj);
+        Cliente Cliente = (Cliente) o;
+        return Objects.equals(cpfOuCnpj, Cliente.cpfOuCnpj);
     }
 
     @Override
