@@ -1,5 +1,6 @@
 package bean.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -21,6 +22,7 @@ public class Cliente implements Serializable {
     private String email;
     private String cpfOuCnpj;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 

@@ -28,9 +28,9 @@ public class TestConfig implements CommandLineRunner {
         Cliente c1 = new Cliente(null, "José", "jose@gmail.com", "123456789");
         Cliente c2 = new Cliente(null, "Maria", "maria@gmail.com", "987654321");
 
-        Pedido p1 = new Pedido(null, Instant.parse("2019-06-20T19:53:07Z"), c1);
-        Pedido p2 = new Pedido(null, Instant.parse("2019-07-21T03:42:10Z"), c2);
-        Pedido p3 = new Pedido(null, Instant.parse("2019-07-22T15:21:22Z"), c1);
+        Pedido p1 = new Pedido(null, Instant.parse("2023-06-20T19:53:07Z"), c1);
+        Pedido p2 = new Pedido(null, Instant.parse("2023-07-21T03:42:10Z"), c2);
+        Pedido p3 = new Pedido(null, Instant.parse("2023-02-22T15:21:22Z"), c1);
 
         clienteRepository.saveAll(Arrays.asList(c1, c2));
         pedidoRepository.saveAll(Arrays.asList(p1, p2, p3));
