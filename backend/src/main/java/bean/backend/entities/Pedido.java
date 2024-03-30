@@ -30,6 +30,8 @@ public class Pedido implements Serializable {
     @OneToMany(mappedBy = "id.pedido")
     private Set<ItemPedido> itens = new HashSet<>();
 
+    private Pagamento pagamento;
+
     public Pedido() {
     }
 
@@ -63,9 +65,18 @@ public class Pedido implements Serializable {
         this.cliente = cliente;
     }
 
-    public Set<ItemPedido> getItens(){
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(Pagamento pagamento) {
+        this.pagamento = pagamento;
+    }
+
+    public Set<ItemPedido> getItens() {
         return itens;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
