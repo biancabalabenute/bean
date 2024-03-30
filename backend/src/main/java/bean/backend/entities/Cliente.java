@@ -1,5 +1,6 @@
 package bean.backend.entities;
 
+import bean.backend.entities.enums.TipoCliente;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -22,6 +23,8 @@ public class Cliente implements Serializable {
     private String email;
     private String cpfOuCnpj;
 
+    private Integer tipo;
+
     @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
@@ -29,11 +32,12 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(Long id, String name, String email, String cpfOuCnpj) {
+    public Cliente(Long id, String name, String email, String cpfOuCnpj, TipoCliente tipo) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.cpfOuCnpj = cpfOuCnpj;
+        setTipo(tipo);
     }
 
     public Long getId() {
@@ -66,6 +70,16 @@ public class Cliente implements Serializable {
 
     public void setCpfOuCnpj(String cpfOuCnpj) {
         this.cpfOuCnpj = cpfOuCnpj;
+    }
+
+    public TipoCliente getTipo() {
+        return TipoCliente.valueOf(tipo);
+    }
+
+    public void setTipo(TipoCliente tipo) {
+        if (tipo != null) {
+            this.tipo = tipo.getCode();
+        }
     }
 
     public List<Pedido> getPedidos() {
