@@ -9,8 +9,8 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "tb_categoria")
-public class Categoria implements Serializable {
+@Table(name = "tb_produto")
+public class Produto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -19,15 +19,19 @@ public class Categoria implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private Double preco;
+    private String descricao;
 
-    private Set<Produto> produtos = new HashSet<>();
+    private Set<Categoria> categorias = new HashSet<>();
 
-    public Categoria() {
+    public Produto() {
     }
 
-    public Categoria(Long id, String name) {
+    public Produto(Long id, String name, Double preco, String descricao) {
         this.id = id;
         this.name = name;
+        this.preco = preco;
+        this.descricao = descricao;
     }
 
     public Long getId() {
@@ -46,16 +50,32 @@ public class Categoria implements Serializable {
         this.name = name;
     }
 
-    public Set<Produto> getProdutos() {
-        return produtos;
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Set<Categoria> getCategorias() {
+        return categorias;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Categoria categoria = (Categoria) o;
-        return Objects.equals(id, categoria.id);
+        Produto produto = (Produto) o;
+        return Objects.equals(id, produto.id);
     }
 
     @Override
