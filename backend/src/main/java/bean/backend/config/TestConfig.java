@@ -1,8 +1,10 @@
 package bean.backend.config;
 
+import bean.backend.entities.Categoria;
 import bean.backend.entities.Cliente;
 import bean.backend.entities.Pedido;
 import bean.backend.entities.enums.TipoCliente;
+import bean.backend.repository.CategoriaRepository;
 import bean.backend.repository.ClienteRepository;
 import bean.backend.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +25,20 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private PedidoRepository pedidoRepository;
 
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
+
+        Categoria cat1 = new Categoria(null, "Eletronicos");
+        Categoria cat2 = new Categoria(null, "Livros");
+        Categoria cat3 = new Categoria(null, "Computadores");
+
+        categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+
+
         Cliente c1 = new Cliente(null, "José", "jose@gmail.com", "123456789", TipoCliente.PESSOA_FISICA);
         Cliente c2 = new Cliente(null, "Maria", "maria@gmail.com", "987654321", TipoCliente.PESSOA_FISICA);
 
