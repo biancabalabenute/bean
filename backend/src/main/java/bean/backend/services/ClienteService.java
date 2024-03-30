@@ -18,8 +18,12 @@ public class ClienteService {
         return repository.findAll();
     }
 
-    public Cliente findById(Long id){
+    public Cliente findById(Long id) {
         Optional<Cliente> obj = repository.findById(id);
         return obj.get();
+    }
+
+    public Cliente insert(Cliente obj) {
+        return repository.save(obj);
     }
 }
