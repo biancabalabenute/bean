@@ -1,14 +1,8 @@
 package bean.backend.config;
 
-import bean.backend.entities.Categoria;
-import bean.backend.entities.Cliente;
-import bean.backend.entities.Pedido;
-import bean.backend.entities.Produto;
+import bean.backend.entities.*;
 import bean.backend.entities.enums.TipoCliente;
-import bean.backend.repository.CategoriaRepository;
-import bean.backend.repository.ClienteRepository;
-import bean.backend.repository.PedidoRepository;
-import bean.backend.repository.ProdutoRepository;
+import bean.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -32,6 +26,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private ItemPedidoRepository itemPedidoRepository;
 
 
     @Override
@@ -69,5 +66,12 @@ public class TestConfig implements CommandLineRunner {
 
         clienteRepository.saveAll(Arrays.asList(c1, c2));
         pedidoRepository.saveAll(Arrays.asList(p1, p2, p3));
+
+        ItemPedido oi1 = new ItemPedido(p1, pro1, 2, pro1.getPreco());
+        ItemPedido oi2 = new ItemPedido(p1, pro3, 1, pro3.getPreco());
+        ItemPedido oi3 = new ItemPedido(p2, pro3, 2, pro3.getPreco());
+        ItemPedido oi4 = new ItemPedido(p3, pro5, 2, pro5.getPreco());
+
+        itemPedidoRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
     }
 }
