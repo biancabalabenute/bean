@@ -50,6 +50,15 @@ public class TestConfig implements CommandLineRunner {
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
         produtoRepository.saveAll(Arrays.asList(pro1, pro2, pro3, pro4, pro5));
 
+        pro1.getCategorias().add(cat2);
+        pro2.getCategorias().add(cat1);
+        pro2.getCategorias().add(cat3);
+        pro3.getCategorias().add(cat3);
+        pro4.getCategorias().add(cat3);
+        pro5.getCategorias().add(cat2);
+
+        produtoRepository.saveAll(Arrays.asList(pro1, pro2, pro3, pro4, pro5));
+
 
         Cliente c1 = new Cliente(null, "José", "jose@gmail.com", "123456789", TipoCliente.PESSOA_FISICA);
         Cliente c2 = new Cliente(null, "Maria", "maria@gmail.com", "987654321", TipoCliente.PESSOA_FISICA);
