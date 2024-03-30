@@ -20,6 +20,7 @@ public class Categoria implements Serializable {
     private Long id;
     private String name;
 
+    @Transient
     private Set<Produto> produtos = new HashSet<>();
 
     public Categoria() {

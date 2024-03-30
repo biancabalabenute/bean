@@ -3,10 +3,12 @@ package bean.backend.config;
 import bean.backend.entities.Categoria;
 import bean.backend.entities.Cliente;
 import bean.backend.entities.Pedido;
+import bean.backend.entities.Produto;
 import bean.backend.entities.enums.TipoCliente;
 import bean.backend.repository.CategoriaRepository;
 import bean.backend.repository.ClienteRepository;
 import bean.backend.repository.PedidoRepository;
+import bean.backend.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +30,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
+    @Autowired
+    private ProdutoRepository produtoRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -36,7 +41,14 @@ public class TestConfig implements CommandLineRunner {
         Categoria cat2 = new Categoria(null, "Livros");
         Categoria cat3 = new Categoria(null, "Computadores");
 
+        Produto pro1 = new Produto(null, "Senhor dos aneis", 90.5, "Livro com capa dura");
+        Produto pro2 = new Produto(null, "Smart TV", 2190.0, "TV preta smart.");
+        Produto pro3 = new Produto(null, "Macbook Pro", 1250.0, "PC da apple");
+        Produto pro4 = new Produto(null, "PC Gamer", 1200.0, "Pc gamer que roda em 4k com led");
+        Produto pro5 = new Produto(null, "Diario de um banana", 100.99, "Primeiro livro");
+
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+        produtoRepository.saveAll(Arrays.asList(pro1, pro2, pro3, pro4, pro5));
 
 
         Cliente c1 = new Cliente(null, "José", "jose@gmail.com", "123456789", TipoCliente.PESSOA_FISICA);

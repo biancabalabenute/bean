@@ -22,6 +22,7 @@ public class Produto implements Serializable {
     private Double preco;
     private String descricao;
 
+    @Transient
     private Set<Categoria> categorias = new HashSet<>();
 
     public Produto() {
