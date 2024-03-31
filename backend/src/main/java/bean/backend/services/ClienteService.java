@@ -4,6 +4,7 @@ import bean.backend.entities.Cliente;
 import bean.backend.repository.ClienteRepository;
 import bean.backend.services.exeptions.DatabaseException;
 import bean.backend.services.exeptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -43,9 +44,13 @@ public class ClienteService {
     }
 
     public Cliente update(Long id, Cliente obj) {
-        Cliente entity = repository.getReferenceById(id);
-        updateData(entity, obj);
-        return repository.save(entity);
+        try {
+            Cliente entity = repository.getReferenceById(id);
+            updateData(entity, obj);
+            return repository.save(entity);
+        } catch (EntityNotFoundException e){
+            throw new ResourceNotFoundException(id);
+        }
     }
 
     private void updateData(Cliente entity, Cliente obj) {
