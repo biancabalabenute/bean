@@ -2,6 +2,7 @@ package bean.backend.services;
 
 import bean.backend.entities.Cliente;
 import bean.backend.repository.ClienteRepository;
+import bean.backend.services.exeptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class ClienteService {
 
     public Cliente findById(Long id) {
         Optional<Cliente> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public Cliente insert(Cliente obj) {
@@ -31,7 +32,7 @@ public class ClienteService {
         repository.deleteById(id);
     }
 
-    public Cliente update(Long id, Cliente obj){
+    public Cliente update(Long id, Cliente obj) {
         Cliente entity = repository.getReferenceById(id);
         updateData(entity, obj);
         return repository.save(entity);

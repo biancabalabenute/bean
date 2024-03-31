@@ -1,5 +1,7 @@
 package bean.backend.resource.exeptions;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
@@ -9,7 +11,8 @@ public class StandardError implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private Instant DataHora;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
+    private Instant timestamp;
     private Integer status;
     private String erro;
     private String mensagem;
@@ -18,20 +21,20 @@ public class StandardError implements Serializable {
     public StandardError() {
     }
 
-    public StandardError(Instant dataHora, Integer status, String erro, String mensagem, String caminho) {
-        DataHora = dataHora;
+    public StandardError(Instant timestamp, Integer status, String erro, String mensagem, String caminho) {
+        this.timestamp = timestamp;
         this.status = status;
         this.erro = erro;
         this.mensagem = mensagem;
         this.caminho = caminho;
     }
 
-    public Instant getDataHora() {
-        return DataHora;
+    public Instant getTimestamp() {
+        return timestamp;
     }
 
-    public void setDataHora(Instant dataHora) {
-        DataHora = dataHora;
+    public void setTimestamp(Instant timestamp) {
+        this.timestamp = timestamp;
     }
 
     public Integer getStatus() {
