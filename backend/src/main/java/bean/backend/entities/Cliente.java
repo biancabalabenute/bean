@@ -24,8 +24,11 @@ public class Cliente implements Serializable {
 
     private Integer tipo;
 
+    @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
+    @ElementCollection
+    @CollectionTable(name = "tb_telefone")
     private Set<String> telefones = new HashSet<>();
 
     @JsonIgnore
@@ -83,6 +86,22 @@ public class Cliente implements Serializable {
         if (tipo != null) {
             this.tipo = tipo.getCode();
         }
+    }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+
+    public Set<String> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(Set<String> telefones) {
+        this.telefones = telefones;
     }
 
     public List<Pedido> getPedidos() {

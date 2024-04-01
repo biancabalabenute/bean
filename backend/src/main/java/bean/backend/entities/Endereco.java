@@ -1,10 +1,20 @@
 package bean.backend.entities;
 
-import java.util.HashSet;
-import java.util.Set;
+import jakarta.persistence.*;
 
-public class Endereco {
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.Objects;
 
+@Entity
+@Table(name = "tb_endereco")
+public class Endereco implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String logradouro;
     private String numero;
@@ -12,12 +22,18 @@ public class Endereco {
     private String bairro;
     private String cep;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    public Endereco(){
+    @ManyToOne
+    @JoinColumn(name = "cidade_id")
+    private Cidade cidade;
+
+    public Endereco() {
     }
 
-    public Endereco(Long id, String logradouro, String numero, String complemento, String bairro, String cep, Cliente cliente) {
+    public Endereco(Long id, String logradouro, String numero, String complemento, String bairro, String cep, Cliente cliente, Cidade cidade) {
         this.id = id;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -25,6 +41,7 @@ public class Endereco {
         this.bairro = bairro;
         this.cep = cep;
         this.cliente = cliente;
+        this.cidade = cidade;
     }
 
     public Long getId() {
@@ -81,5 +98,27 @@ public class Endereco {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Endereco endereco = (Endereco) o;
+        return Objects.equals(id, endereco.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
