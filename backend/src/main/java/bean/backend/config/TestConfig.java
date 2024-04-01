@@ -30,6 +30,12 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private ItemPedidoRepository itemPedidoRepository;
 
+    @Autowired
+    private EstadoRepository estadoRepository;
+
+    @Autowired
+    private CidadeRepository cidadeRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -78,5 +84,18 @@ public class TestConfig implements CommandLineRunner {
         p1.setPagamento(pag1);
 
         pedidoRepository.save(p1);
+
+        Estado est1 = new Estado(null, "São Paulo");
+        Estado est2 = new Estado(null, "Mato Grosso do Sul");
+
+        Cidade cd1 = new Cidade(null, "Campinas", est1);
+        Cidade cd2 = new Cidade(null, "Campo Grande", est2);
+        Cidade cd3 = new Cidade(null, "Ponta Porã", est2);
+
+        est1.getCidades().addAll(Arrays.asList(cd1));
+        est2.getCidades().addAll(Arrays.asList(cd2, cd3));
+
+        estadoRepository.saveAll(Arrays.asList(est1, est2));
+        cidadeRepository.saveAll(Arrays.asList(cd1, cd2, cd3));
     }
 }
