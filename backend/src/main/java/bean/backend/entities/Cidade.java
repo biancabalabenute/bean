@@ -1,7 +1,6 @@
 package bean.backend.entities;
 
-public class Estado {
+public class Cidade {
     private Long id;
     private String nome;
-
 }
