@@ -6,9 +6,7 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_cliente")
@@ -25,6 +23,10 @@ public class Cliente implements Serializable {
     private String cpfOuCnpj;
 
     private Integer tipo;
+
+    private List<Endereco> enderecos = new ArrayList<>();
+
+    private Set<String> telefones = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "cliente")
