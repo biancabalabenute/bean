@@ -36,6 +36,12 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private CidadeRepository cidadeRepository;
 
+    @Autowired
+    private EnderecoRepository enderecoRepository;
+
+    @Autowired
+    private TransportadoraRepository transportadoraRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -97,5 +103,18 @@ public class TestConfig implements CommandLineRunner {
 
         estadoRepository.saveAll(Arrays.asList(est1, est2));
         cidadeRepository.saveAll(Arrays.asList(cd1, cd2, cd3));
+
+        Transportadora t1 = new Transportadora(null, "Correios");
+
+        transportadoraRepository.saveAll(Arrays.asList(t1));
+
+        Endereco e1 = new Endereco(null, "Rua Flores", "300", "Casa", "Jardim", "38220834", c2, cd2);
+        Endereco e2 = new Endereco(null, "Rua Da Floresta", "120", "Casa de madeira", "Centro", "123123", c1, cd3);
+        Endereco e3 = new Endereco(null, "Rua Do Centro", "1000", "Predio amarelo", "Centro", "123456", t1, cd2);
+
+        c1.getEnderecos().addAll(Arrays.asList(e2));
+        c2.getEnderecos().addAll(Arrays.asList(e1));
+        t1.getEnderecos().addAll(Arrays.asList(e3));
+        enderecoRepository.saveAll(Arrays.asList(e1, e2, e3));
     }
 }
