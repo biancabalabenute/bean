@@ -42,6 +42,8 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private TransportadoraRepository transportadoraRepository;
 
+    @Autowired
+    private TelefoneRepository telefoneRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -116,5 +118,14 @@ public class TestConfig implements CommandLineRunner {
         c2.getEnderecos().addAll(Arrays.asList(e1));
         t1.getEnderecos().addAll(Arrays.asList(e3));
         enderecoRepository.saveAll(Arrays.asList(e1, e2, e3));
+
+
+        Telefone tel1 = new Telefone(null, "6799111222", c1);
+        Telefone tel2 = new Telefone(null, "1699111222", c2);
+
+        telefoneRepository.saveAll(Arrays.asList(tel1, tel2));
+
+        c1.getTelefones().add(tel1);
+        c2.getTelefones().add(tel2);
     }
 }
