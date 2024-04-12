@@ -1,7 +1,6 @@
 package bean.backend.resource;
 
 import bean.backend.entities.Categoria;
-import bean.backend.entities.Cliente;
 import bean.backend.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

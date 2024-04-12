@@ -22,4 +22,18 @@ public class ProdutoService {
         Optional<Produto> obj = repository.findById(id);
         return obj.get();
     }
+
+    public Produto create(Produto obj) {
+        obj = repository.save(obj);
+        return obj;
+    }
+
+    public Produto update(Produto obj) {
+        obj = repository.save(obj);
+        return obj;
+    }
+
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
 }
