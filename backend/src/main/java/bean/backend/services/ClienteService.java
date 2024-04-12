@@ -57,6 +57,4 @@ public class ClienteService {
         entity.setName(obj.getName());
         entity.setEmail(obj.getEmail());
     }
-
-
 }
