@@ -23,7 +23,7 @@ public class ProdutoService {
         return obj.get();
     }
 
-    public Produto create(Produto obj) {
+    public Produto insert(Produto obj) {
         obj = repository.save(obj);
         return obj;
     }

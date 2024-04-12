@@ -28,8 +28,8 @@ public class ProdutoResource {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> create(@RequestBody Produto obj) {
-        obj = service.create(obj);
+    public ResponseEntity<Produto> insert(@RequestBody Produto obj) {
+        obj = service.insert(obj);
         return ResponseEntity.ok().body(obj);
     }
 
