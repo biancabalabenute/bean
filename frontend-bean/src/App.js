@@ -1,5 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import TelaLogin from './pages/TelaLogin';
+import MenuPrincipal from './pages/MenuPrincipal/MenuPrincipal';
+
 
 const routers = createBrowserRouter([{
   path: "/login",
@@ -7,7 +9,13 @@ const routers = createBrowserRouter([{
 }, {
   path: "/",
   element: <h1>Rota</h1>
-}])
+},
+{
+  path: "/menu",
+  element: <MenuPrincipal/>
+}
+
+])
 
 function App() {
   return (

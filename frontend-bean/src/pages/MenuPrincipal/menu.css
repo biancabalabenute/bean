@@ -1,0 +1,41 @@
+.menu-principal {
+    background-color: #D9D9D9; 
+    width: 100vw; 
+    height: 100vh; 
+    position: absolute;
+    overflow: hidden; 
+    top: 0;
+    left: 0;
+  }
+  .icon-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  .user-icon {
+    color: #3A3A3A;
+    width: 180px;
+    top: 100px;
+    
+  }
+  
+  .notification-icon {
+    color: #3A3A3A;
+    width: 140px;
+    top: 100px;
+  }
+
+  .menu{
+    margin-left: 300px;
+    margin-top: 100px;
+  }
+
+  .table{
+    margin-top: 100px;
+    background-color: #f7f4e8;
+    margin-left: 250px;
+    border-collapse: separate; 
+    border-spacing: 20px; 
+  }

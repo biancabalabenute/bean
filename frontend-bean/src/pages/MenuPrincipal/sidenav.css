@@ -1,0 +1,39 @@
+.sidenav {
+  top: 200px; /* Mantém a distância entre o topo e a barra lateral */
+  background-color: #27a6b2!important;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f7f4e8;
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  z-index: 1000;
+  left: 0;
+  padding-top: 20px; /* Espaçamento para acomodar a logo */
+}
+
+.nav-items {
+  padding-top: 20px; /* Adiciona espaço para a logo */
+}
+
+.nav-item {
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.search-input {
+  padding-left: 30px; /* Ajusta o padding para acomodar o ícone */
+  border-radius: 20px; /* Define as bordas arredondadas */
+}
+
+.logo-bean {
+  width: 200px; /* Largura desejada da logo */
+  height: 200px; /* Altura desejada da logo */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
+
+
+
