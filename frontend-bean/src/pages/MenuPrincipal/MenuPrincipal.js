@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
-import SideNav from './SideNav';
 import './menu.css';
 import axios from 'axios';
+import SideNav from './SideNav';
 
 function MenuPrincipal() {
     const [clientes, setClientes] = useState([]);
@@ -26,8 +26,8 @@ function MenuPrincipal() {
       <div className="icon-container notification-icon">
         <i className="fa-solid fa-bell" style={{fontSize: 30}}></i>
       </div>
+      <SideNav/>
     <Card/>
-    <SideNav/>
     <table className='table'>
           <thead>
             <tr>
