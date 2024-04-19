@@ -55,6 +55,5 @@ public class ClienteService {
 
     private void updateData(Cliente entity, Cliente obj) {
         entity.setName(obj.getName());
-        entity.setEmail(obj.getEmail());
     }
 }

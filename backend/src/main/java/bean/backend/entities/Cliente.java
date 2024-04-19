@@ -1,6 +1,7 @@
 package bean.backend.entities;
 
 import bean.backend.entities.enums.TipoCliente;
+import bean.backend.entities.enums.TipoFisicoEstadual;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -21,10 +22,11 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String email;
     private String cpfOuCnpj;
 
     private Integer tipo;
+    private Integer tipoFisicoEstadual;
+    private String inscricaoEstadual;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant dataCadastro;
@@ -39,13 +41,14 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(Long id, String name, String email, String cpfOuCnpj, Instant dataCadastro, TipoCliente tipo) {
+    public Cliente(Long id, String name, String cpfOuCnpj, Instant dataCadastro, String inscricaoEstadual, TipoCliente tipo, TipoFisicoEstadual tipoFisicoEstadual) {
         this.id = id;
         this.name = name;
-        this.email = email;
         this.cpfOuCnpj = cpfOuCnpj;
         this.dataCadastro = dataCadastro;
+        this.inscricaoEstadual = inscricaoEstadual;
         setTipo(tipo);
+        setTipoFisicoEstadual(tipoFisicoEstadual);
     }
 
     public Long getId() {
@@ -64,14 +67,6 @@ public class Cliente implements Serializable {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getCpfOuCnpj() {
         return cpfOuCnpj;
     }
@@ -88,6 +83,14 @@ public class Cliente implements Serializable {
         this.dataCadastro = dataCadastro;
     }
 
+    public String getInscricaoEstadual() {
+        return inscricaoEstadual;
+    }
+
+    public void setInscricaoEstadual(String inscricaoEstadual) {
+        this.inscricaoEstadual = inscricaoEstadual;
+    }
+
     public TipoCliente getTipo() {
         return TipoCliente.valueOf(tipo);
     }
@@ -95,6 +98,12 @@ public class Cliente implements Serializable {
     public void setTipo(TipoCliente tipo) {
         if (tipo != null) {
             this.tipo = tipo.getCode();
+        }
+    }
+
+    public void setTipoFisicoEstadual(TipoFisicoEstadual tipoFisicoEstadual) {
+        if (tipoFisicoEstadual != null) {
+            this.tipoFisicoEstadual = tipoFisicoEstadual.getCode();
         }
     }
 
