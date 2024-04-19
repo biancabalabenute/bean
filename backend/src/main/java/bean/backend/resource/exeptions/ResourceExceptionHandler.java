@@ -1,7 +1,7 @@
 package bean.backend.resource.exeptions;
 
-import bean.backend.services.exeptions.DatabaseException;
-import bean.backend.services.exeptions.ResourceNotFoundException;
+import bean.backend.services.exceptions.DatabaseException;
+import bean.backend.services.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

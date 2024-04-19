@@ -2,8 +2,8 @@ package bean.backend.services;
 
 import bean.backend.entities.Categoria;
 import bean.backend.repository.CategoriaRepository;
-import bean.backend.services.exeptions.DatabaseException;
-import bean.backend.services.exeptions.ResourceNotFoundException;
+import bean.backend.services.exceptions.DatabaseException;
+import bean.backend.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;

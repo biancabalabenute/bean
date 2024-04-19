@@ -48,6 +48,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private MarcaRepository marcaRepository;
 
+    @Autowired
+    private FornecedorRepository fornecedorRepository;
+
     @Override
     public void run(String... args) throws Exception {
 

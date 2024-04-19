@@ -1,7 +1,7 @@
 package bean.backend.services;
 
-import bean.backend.entities.Cliente;
-import bean.backend.repository.ClienteRepository;
+import bean.backend.entities.Fornecedor;
+import bean.backend.repository.FornecedorRepository;
 import bean.backend.services.exceptions.DatabaseException;
 import bean.backend.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
@@ -14,21 +14,21 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ClienteService {
+public class FornecedorService {
 
     @Autowired
-    private ClienteRepository repository;
+    private FornecedorRepository repository;
 
-    public List<Cliente> findAll() {
+    public List<Fornecedor> findAll() {
         return repository.findAll();
     }
 
-    public Cliente findById(Long id) {
-        Optional<Cliente> obj = repository.findById(id);
+    public Fornecedor findById(Long id) {
+        Optional<Fornecedor> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public Cliente insert(Cliente obj) {
+    public Fornecedor insert(Fornecedor obj) {
         return repository.save(obj);
     }
 
@@ -43,9 +43,9 @@ public class ClienteService {
         }
     }
 
-    public Cliente update(Long id, Cliente obj) {
+    public Fornecedor update(Long id, Fornecedor obj) {
         try {
-            Cliente entity = repository.getReferenceById(id);
+            Fornecedor entity = repository.getReferenceById(id);
             updateData(entity, obj);
             return repository.save(entity);
         } catch (EntityNotFoundException e){
@@ -53,8 +53,7 @@ public class ClienteService {
         }
     }
 
-    private void updateData(Cliente entity, Cliente obj) {
+    private void updateData(Fornecedor entity, Fornecedor obj) {
         entity.setName(obj.getName());
-        entity.setEmail(obj.getEmail());
     }
 }
