@@ -1,11 +1,13 @@
 package bean.backend.entities;
 
 import bean.backend.entities.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.*;
 
 @Entity
@@ -24,11 +26,11 @@ public class Cliente implements Serializable {
 
     private Integer tipo;
 
-    @OneToMany(mappedBy = "cliente")
-    private List<Endereco> enderecos = new ArrayList<>();
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
+    private Instant dataCadastro;
 
     @OneToMany(mappedBy = "cliente")
-    private List<Telefone> telefones = new ArrayList<>();
+    private List<Endereco> enderecos = new ArrayList<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "cliente")
@@ -37,11 +39,12 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(Long id, String name, String email, String cpfOuCnpj, TipoCliente tipo) {
+    public Cliente(Long id, String name, String email, String cpfOuCnpj, Instant dataCadastro, TipoCliente tipo) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.cpfOuCnpj = cpfOuCnpj;
+        this.dataCadastro = dataCadastro;
         setTipo(tipo);
     }
 
@@ -77,6 +80,14 @@ public class Cliente implements Serializable {
         this.cpfOuCnpj = cpfOuCnpj;
     }
 
+    public Instant getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Instant dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
     public TipoCliente getTipo() {
         return TipoCliente.valueOf(tipo);
     }
@@ -93,14 +104,6 @@ public class Cliente implements Serializable {
 
     public void setEnderecos(List<Endereco> enderecos) {
         this.enderecos = enderecos;
-    }
-
-    public List<Telefone> getTelefones() {
-        return telefones;
-    }
-
-    public void setTelefones(List<Telefone> telefones) {
-        this.telefones = telefones;
     }
 
     public List<Pedido> getPedidos() {

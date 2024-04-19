@@ -20,7 +20,7 @@ public class Pagamento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
-    private Instant isntant;
+    private Instant instant;
 
     @JsonIgnore
     @OneToOne
@@ -30,9 +30,9 @@ public class Pagamento implements Serializable {
     public Pagamento() {
     }
 
-    public Pagamento(Long id, Instant isntant, Pedido pedido) {
+    public Pagamento(Long id, Instant instant, Pedido pedido) {
         this.id = id;
-        this.isntant = isntant;
+        this.instant = instant;
         this.pedido = pedido;
     }
 
@@ -45,11 +45,11 @@ public class Pagamento implements Serializable {
     }
 
     public Instant getIsntant() {
-        return isntant;
+        return instant;
     }
 
     public void setIsntant(Instant isntant) {
-        this.isntant = isntant;
+        this.instant = isntant;
     }
 
     public Pedido getPedido() {

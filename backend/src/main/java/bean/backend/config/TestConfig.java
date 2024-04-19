@@ -83,8 +83,8 @@ public class TestConfig implements CommandLineRunner {
 
         produtoRepository.saveAll(Arrays.asList(pro1, pro2, pro3, pro4, pro5));
 
-        Cliente c1 = new Cliente(null, "José", "jose@gmail.com", "123456789", TipoCliente.PESSOA_FISICA);
-        Cliente c2 = new Cliente(null, "Maria", "maria@gmail.com", "987654321", TipoCliente.PESSOA_FISICA);
+        Cliente c1 = new Cliente(null, "José", "jose@gmail.com", "123456789", Instant.parse("2023-03-20T17:53:07Z"), TipoCliente.PESSOA_FISICA);
+        Cliente c2 = new Cliente(null, "Maria", "maria@gmail.com", "987654321", Instant.parse("2023-04-10T19:53:07Z"), TipoCliente.PESSOA_FISICA);
 
         Pedido p1 = new Pedido(null, Instant.parse("2023-06-20T19:53:07Z"), c1);
         Pedido p2 = new Pedido(null, Instant.parse("2023-07-21T03:42:10Z"), c2);
@@ -132,12 +132,10 @@ public class TestConfig implements CommandLineRunner {
         enderecoRepository.saveAll(Arrays.asList(e1, e2, e3));
 
 
-        Telefone tel1 = new Telefone(null, "6799111222", c1);
-        Telefone tel2 = new Telefone(null, "1699111222", c2);
+        //PARA QUANDO CRIAR O CONTEXTO DE FORNECEDOR
+        Telefone tel1 = new Telefone(null, "6799111222");
+        Telefone tel2 = new Telefone(null, "1699111222");
 
         telefoneRepository.saveAll(Arrays.asList(tel1, tel2));
-
-        c1.getTelefones().add(tel1);
-        c2.getTelefones().add(tel2);
     }
 }

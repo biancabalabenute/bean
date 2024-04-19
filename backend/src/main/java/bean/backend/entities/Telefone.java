@@ -19,18 +19,12 @@ public class Telefone implements Serializable {
     private Long id;
     private String numero;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
-
     public Telefone() {
     }
 
-    public Telefone(Long id, String numero, Cliente cliente) {
+    public Telefone(Long id, String numero) {
         this.id = id;
         this.numero = numero;
-        this.cliente = cliente;
     }
 
     public Long getId() {
@@ -47,14 +41,6 @@ public class Telefone implements Serializable {
 
     public void setNumero(String numero) {
         this.numero = numero;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     @Override
