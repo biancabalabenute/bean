@@ -45,31 +45,43 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private TelefoneRepository telefoneRepository;
 
+    @Autowired
+    private MarcaRepository marcaRepository;
+
     @Override
     public void run(String... args) throws Exception {
 
-        Categoria cat1 = new Categoria(null, "Eletronicos");
-        Categoria cat2 = new Categoria(null, "Livros");
-        Categoria cat3 = new Categoria(null, "Computadores");
+        Categoria cat1 = new Categoria(null, "Smartphone");
+        Categoria cat2 = new Categoria(null, "Televisão");
+        Categoria cat3 = new Categoria(null, "Tablets");
 
-        Produto pro1 = new Produto(null, "Senhor dos aneis", 90.5, "Livro com capa dura");
-        Produto pro2 = new Produto(null, "Smart TV", 2190.0, "TV preta smart.");
-        Produto pro3 = new Produto(null, "Macbook Pro", 1250.0, "PC da apple");
-        Produto pro4 = new Produto(null, "PC Gamer", 1200.0, "Pc gamer que roda em 4k com led");
-        Produto pro5 = new Produto(null, "Diario de um banana", 100.99, "Primeiro livro");
+        Marca mar1 = new Marca(null, "Samsung");
+        Marca mar2 = new Marca(null, "Motorola");
+        Marca mar3 = new Marca(null, "Apple");
+
+        Produto pro1 = new Produto(null, "TV 4K", 2190.0, "TV Samsung Preta");
+        Produto pro2 = new Produto(null, "Celular Motorola", 2300.0, "Celular com camera boa");
+        Produto pro3 = new Produto(null, "Ipdad", 1250.0, "Tablet da apple");
+        Produto pro4 = new Produto(null, "Tablet rosa", 1200.0, "Tablet que é da cor rosa");
+        Produto pro5 = new Produto(null, "TV de tubo", 100.99, "TV das antigas");
 
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+        marcaRepository.saveAll(Arrays.asList(mar1, mar2, mar3));
         produtoRepository.saveAll(Arrays.asList(pro1, pro2, pro3, pro4, pro5));
 
         pro1.getCategorias().add(cat2);
         pro2.getCategorias().add(cat1);
-        pro2.getCategorias().add(cat3);
         pro3.getCategorias().add(cat3);
         pro4.getCategorias().add(cat3);
         pro5.getCategorias().add(cat2);
 
-        produtoRepository.saveAll(Arrays.asList(pro1, pro2, pro3, pro4, pro5));
+        pro1.getMarcas().add(mar1);
+        pro2.getMarcas().add(mar2);
+        pro3.getMarcas().add(mar3);
+        pro4.getMarcas().add(mar1);
+        pro5.getMarcas().add(mar2);
 
+        produtoRepository.saveAll(Arrays.asList(pro1, pro2, pro3, pro4, pro5));
 
         Cliente c1 = new Cliente(null, "José", "jose@gmail.com", "123456789", TipoCliente.PESSOA_FISICA);
         Cliente c2 = new Cliente(null, "Maria", "maria@gmail.com", "987654321", TipoCliente.PESSOA_FISICA);

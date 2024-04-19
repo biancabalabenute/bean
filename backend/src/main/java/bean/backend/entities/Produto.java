@@ -27,6 +27,10 @@ public class Produto implements Serializable {
     @JoinTable(name = "tb_produto_categoria", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
     private Set<Categoria> categorias = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(name = "tb_produto_marca", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "marca_id"))
+    private Set<Marca> marcas = new HashSet<>();
+
     @OneToMany(mappedBy = "id.produto")
     private Set<ItemPedido> itens = new HashSet<>();
 
@@ -74,6 +78,10 @@ public class Produto implements Serializable {
 
     public Set<Categoria> getCategorias() {
         return categorias;
+    }
+
+    public Set<Marca> getMarcas() {
+        return marcas;
     }
 
     @JsonIgnore
