@@ -1,13 +1,9 @@
 package bean.backend.entities;
 
-import bean.backend.entities.enums.TipoCliente;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.*;
 
 @Entity
@@ -23,7 +19,6 @@ public class Fornecedor implements Serializable {
     private String name;
     @OneToMany(mappedBy = "fornecedor")
     private List<Telefone> telefones = new ArrayList<>();
-
 
     public Fornecedor() {
     }

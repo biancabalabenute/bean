@@ -135,11 +135,19 @@ public class TestConfig implements CommandLineRunner {
         t1.getEnderecos().addAll(Arrays.asList(e3));
         enderecoRepository.saveAll(Arrays.asList(e1, e2, e3));
 
-
-        //PARA QUANDO CRIAR O CONTEXTO DE FORNECEDOR
         Telefone tel1 = new Telefone(null, "6799111222");
         Telefone tel2 = new Telefone(null, "1699111222");
-
         telefoneRepository.saveAll(Arrays.asList(tel1, tel2));
+
+        Fornecedor f1 = new Fornecedor(null, "Shopping China");
+        Fornecedor f2 = new Fornecedor(null, "Shopping West Garden");
+
+        tel1.setFornecedor(f1);
+        tel2.setFornecedor(f2);
+
+        f1.getTelefones().add(tel1);
+        f2.getTelefones().add(tel2);
+
+        fornecedorRepository.saveAll(Arrays.asList(f1, f2));
     }
 }
