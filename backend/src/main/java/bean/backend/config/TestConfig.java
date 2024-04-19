@@ -2,6 +2,7 @@ package bean.backend.config;
 
 import bean.backend.entities.*;
 import bean.backend.entities.enums.TipoCliente;
+import bean.backend.entities.enums.TipoFisicoEstadual;
 import bean.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -83,8 +84,8 @@ public class TestConfig implements CommandLineRunner {
 
         produtoRepository.saveAll(Arrays.asList(pro1, pro2, pro3, pro4, pro5));
 
-        Cliente c1 = new Cliente(null, "José", "jose@gmail.com", "123456789", Instant.parse("2023-03-20T17:53:07Z"), TipoCliente.PESSOA_FISICA);
-        Cliente c2 = new Cliente(null, "Maria", "maria@gmail.com", "987654321", Instant.parse("2023-04-10T19:53:07Z"), TipoCliente.PESSOA_FISICA);
+        Cliente c1 = new Cliente(null, "José", "123456789", Instant.parse("2023-03-20T17:53:07Z"), "8974233321", TipoCliente.PESSOA_FISICA, TipoFisicoEstadual.INSENTO);
+        Cliente c2 = new Cliente(null, "Maria", "987654321", Instant.parse("2023-04-10T19:53:07Z"), "98989889898", TipoCliente.PESSOA_FISICA, TipoFisicoEstadual.INSENTO);
 
         Pedido p1 = new Pedido(null, Instant.parse("2023-06-20T19:53:07Z"), c1);
         Pedido p2 = new Pedido(null, Instant.parse("2023-07-21T03:42:10Z"), c2);
