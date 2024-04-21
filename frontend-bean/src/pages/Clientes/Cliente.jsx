@@ -1,11 +1,14 @@
 import React from "react";
+import MenuClientes from './MenuClientes';
+import './menuClientes.css';
 
 function Cliente() {
   return (
-    <div>
-      Página do Cliente
+    <div id= "ContainerCliente"> 
+      <MenuClientes/>
     </div>
   );
+
 }
 
 export default Cliente;
