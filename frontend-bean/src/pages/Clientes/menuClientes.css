@@ -24,11 +24,11 @@
 .navCliente{
   display: inline-block;
   padding-left: 20px;
-
-
-
 }
 
+#nomeCliente{
+  padding-left: 100vh;
+}
 #nomeCliente{
   padding-left: 100vh;
 }
