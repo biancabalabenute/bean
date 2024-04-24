@@ -1,7 +1,6 @@
 import React from "react";
 import MenuClientes from './MenuClientes';
 import './menuClientes.css';
-import './menuClientes.css';
 
 function Cliente() {
   return (
