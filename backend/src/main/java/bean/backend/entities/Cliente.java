@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.*;
 
 @Entity
@@ -27,7 +28,6 @@ public class Cliente implements Serializable {
     private Integer tipo;
     private Integer tipoFisicoEstadual;
     private String inscricaoEstadual;
-
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant dataCadastro;
 
