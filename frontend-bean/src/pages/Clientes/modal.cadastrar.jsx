@@ -42,11 +42,7 @@ const App = () => {
         </div>
         <div class="buton2">
         <button  onClick={closeModal} id = "butonOK"  type="submit">Ok</button>
-       
         </div>
-        
-        
-
       </Modal>
     </div>
   );

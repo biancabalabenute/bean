@@ -1,7 +1,7 @@
 import React from 'react';
 import './cards.css';
 import ModalCadastrar from './modal.cadastrar';
-
+import ModalBuscar from './modalBuscar';
 function cards() {
   return (
     <div className="container">
@@ -11,10 +11,9 @@ function cards() {
         <div className='colorBlue'></div>
       </div>
       <div className="card" style={{ height: '150px' }}>
-      <ModalCadastrar />
-        <h2 id ="tituloBuscarClientes" >Buscar Clientes</h2>
-        <i class="fa-solid fa-magnifying-glass" style={{fontSize: 30,}}></i>
-        <div className='colorBlue'></div>
+      <ModalBuscar/>
+        
+        <div style={{marginTop:"71.5px"}} className='colorBlue'></div>
       </div>
       <div className="card" style={{ height: '150px' }}>
       <ModalCadastrar />
