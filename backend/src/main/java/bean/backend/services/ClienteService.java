@@ -28,6 +28,15 @@ public class ClienteService {
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
+    public List<Cliente> findByName(String name) {
+        return repository.findByName(name);
+    }
+
+    public Cliente findByCpfCnpj(String cpfOuCnpj) {
+        Optional<Cliente> cliente = repository.findByCpfOuCnpj(cpfOuCnpj);
+        return cliente.orElseThrow(() -> new ResourceNotFoundException("Cliente não encontrado para CPF/CNPJ: " + cpfOuCnpj));
+    }
+
     public Cliente insert(Cliente obj) {
         return repository.save(obj);
     }

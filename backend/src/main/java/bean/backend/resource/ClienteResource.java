@@ -29,6 +29,19 @@ public class ClienteResource {
         return ResponseEntity.ok().body(obj);
     }
 
+    @GetMapping(value = "/buscar-por-nome")
+    public ResponseEntity<List<Cliente>> findByNome(@RequestParam String nome) {
+        List<Cliente> list = service.findByName(nome);
+        return ResponseEntity.ok().body(list);
+    }
+
+
+    @GetMapping(value = "/buscar-por-cpf-cnpj")
+    public ResponseEntity<Cliente> findByCpfCnpj(@RequestParam String cpfCnpj) {
+        Cliente obj = service.findByCpfCnpj(cpfCnpj);
+        return ResponseEntity.ok().body(obj);
+    }
+
     @PostMapping
     public ResponseEntity<Cliente> insert(@RequestBody Cliente obj) {
         obj = service.insert(obj);
