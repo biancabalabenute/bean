@@ -28,6 +28,11 @@ public class ProdutoService {
         return repository.findByMarcasId(marcaId);
     }
 
+    public List<Produto> findByMarcaName(String nameMarca) {
+        return repository.findByMarcasName(nameMarca);
+    }
+
+
     public Produto findByCodigoDeBarras(String codigoDeBarras) {
         Optional<Produto> produto = repository.findByCodigoDeBarras(codigoDeBarras);
         return produto.orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado para o código de barras: " + codigoDeBarras));

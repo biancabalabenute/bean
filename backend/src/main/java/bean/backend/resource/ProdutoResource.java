@@ -33,6 +33,13 @@ public class ProdutoResource {
         return ResponseEntity.ok().body(produtos);
     }
 
+    @GetMapping(value = "/por-marca-nome")
+    public ResponseEntity<List<Produto>> findByMarcaName(@RequestParam String nameMarca) {
+        List<Produto> produtos = service.findByMarcaName(nameMarca);
+        return ResponseEntity.ok().body(produtos);
+    }
+
+
     @GetMapping(value = "/por-codigo-de-barras")
     public ResponseEntity<Produto> findByCodigoDeBarras(@RequestParam String codigoDeBarras) {
         Produto produto = service.findByCodigoDeBarras(codigoDeBarras);
