@@ -1,0 +1,26 @@
+
+.cards-container {
+  margin-top: 200px;
+  display: flex;
+  justify-content: space-between; 
+  flex-wrap: wrap; 
+}
+
+.card-products {
+  background-color: #3A3A3A;
+  border: 1px solid #3A3A3A;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  color: #F7F4E8;
+  width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.color-blue {
+  background: #27a6b2;
+  width: 300px;
+  height: 20px;
+  margin-top: 10px;
+}

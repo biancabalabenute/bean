@@ -1,0 +1,11 @@
+.produtos{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 200px;
+    margin-bottom: 0px;
+    height: 100%;
+    width: 89.6%;
+    background: #D9D9D9;
+    overflow: hidden; 
+}
