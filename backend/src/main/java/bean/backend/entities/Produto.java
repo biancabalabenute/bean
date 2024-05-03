@@ -1,13 +1,16 @@
 package bean.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 @Entity
 @Table(name = "tb_produto")
@@ -20,8 +23,19 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Double preco;
+    private Double precoUnitario;
     private String descricao;
+    private String modelo;
+
+    private String codigoDeBarras;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT")
+    private LocalDate data;
+    private Integer quantidade;
+
+    @ManyToMany
+    @JoinTable(name = "tb_produto_fornecedor", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "fornecedor_id"))
+    private Set<Fornecedor> fornecedores = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "tb_produto_categoria", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
@@ -37,11 +51,15 @@ public class Produto implements Serializable {
     public Produto() {
     }
 
-    public Produto(Long id, String name, Double preco, String descricao) {
+    public Produto(Long id, String name, Double precoUnitario, String descricao, String modelo, String codigoDeBarras, LocalDate data, Integer quantidade) {
         this.id = id;
         this.name = name;
-        this.preco = preco;
+        this.precoUnitario = precoUnitario;
         this.descricao = descricao;
+        this.modelo = modelo;
+        this.codigoDeBarras = codigoDeBarras;
+        this.data = data;
+        this.quantidade = quantidade;
     }
 
     public Long getId() {
@@ -60,12 +78,12 @@ public class Produto implements Serializable {
         this.name = name;
     }
 
-    public Double getPreco() {
-        return preco;
+    public Double getPrecoUnitario() {
+        return precoUnitario;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
+    public void setPrecoUnitario(Double precoUnitario) {
+        this.precoUnitario = precoUnitario;
     }
 
     public String getDescricao() {
@@ -76,12 +94,57 @@ public class Produto implements Serializable {
         this.descricao = descricao;
     }
 
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getCodigoDeBarras() {
+        return codigoDeBarras;
+    }
+
+    public void setCodigoDeBarras(String codigoDeBarras) {
+        if (isCodigoDeBarrasValido(codigoDeBarras)) {
+            this.codigoDeBarras = codigoDeBarras;
+        } else {
+            throw new IllegalArgumentException("Código de barras inválido.");
+        }
+    }
+
+    private boolean isCodigoDeBarrasValido(String codigoDeBarras) {
+        Pattern pattern = Pattern.compile("^(\\d{12}|\\d{13})$");
+        return pattern.matcher(codigoDeBarras).matches();
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
     public Set<Categoria> getCategorias() {
         return categorias;
     }
 
     public Set<Marca> getMarcas() {
         return marcas;
+    }
+
+    public Set<Fornecedor> getFornecedores() {
+        return fornecedores;
     }
 
     @JsonIgnore

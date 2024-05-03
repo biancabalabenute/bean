@@ -3,6 +3,7 @@ package bean.backend.config;
 import bean.backend.entities.*;
 import bean.backend.entities.enums.TipoCliente;
 import bean.backend.entities.enums.TipoFisicoEstadual;
+import bean.backend.entities.enums.TipoPlataforma;
 import bean.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Arrays;
 
 @Configuration
@@ -63,11 +65,12 @@ public class TestConfig implements CommandLineRunner {
         Marca mar2 = new Marca(null, "Motorola");
         Marca mar3 = new Marca(null, "Apple");
 
-        Produto pro1 = new Produto(null, "TV 4K", 2190.0, "TV Samsung Preta");
-        Produto pro2 = new Produto(null, "Celular Motorola", 2300.0, "Celular com camera boa");
-        Produto pro3 = new Produto(null, "Ipdad", 1250.0, "Tablet da apple");
-        Produto pro4 = new Produto(null, "Tablet rosa", 1200.0, "Tablet que é da cor rosa");
-        Produto pro5 = new Produto(null, "TV de tubo", 100.99, "TV das antigas");
+        Produto pro1 = new Produto(null, "TV 4K", 2190.0, "TV Samsung Preta", "Modelo que funciona", "12312312312", LocalDate.parse("2023-06-20"), 1);
+        Produto pro2 = new Produto(null, "Celular Motorola", 2300.0, "Celular com câmera boa", "Modelo XZ123", "45645645645", LocalDate.parse("2023-08-15"), 1);
+        Produto pro3 = new Produto(null, "iPad", 1250.0, "Tablet da Apple", "Modelo Air", "78978978978", LocalDate.parse("2023-07-10"), 1);
+        Produto pro4 = new Produto(null, "Tablet rosa", 1200.0, "Tablet que é da cor rosa", "Modelo Pink Edition", "98765432100", LocalDate.parse("2023-09-01"), 1);
+        Produto pro5 = new Produto(null, "TV de tubo", 100.99, "TV das antigas", "Modelo Retro", "11223344556", LocalDate.parse("2023-05-05"), 1);
+
 
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
         marcaRepository.saveAll(Arrays.asList(mar1, mar2, mar3));
@@ -97,10 +100,10 @@ public class TestConfig implements CommandLineRunner {
         clienteRepository.saveAll(Arrays.asList(c1, c2));
         pedidoRepository.saveAll(Arrays.asList(p1, p2, p3));
 
-        ItemPedido oi1 = new ItemPedido(p1, pro1, 2, pro1.getPreco());
-        ItemPedido oi2 = new ItemPedido(p1, pro3, 1, pro3.getPreco());
-        ItemPedido oi3 = new ItemPedido(p2, pro3, 2, pro3.getPreco());
-        ItemPedido oi4 = new ItemPedido(p3, pro5, 2, pro5.getPreco());
+        ItemPedido oi1 = new ItemPedido(p1, pro1, 2, pro1.getPrecoUnitario(), "#2234", TipoPlataforma.MERCADO_LIVRE, c1);
+        ItemPedido oi2 = new ItemPedido(p1, pro3, 1, pro3.getPrecoUnitario(), "#1234", TipoPlataforma.SHOPEE, c2);
+        ItemPedido oi3 = new ItemPedido(p2, pro3, 2, pro3.getPrecoUnitario(), "#4546", TipoPlataforma.SHOPEE, c1);
+        ItemPedido oi4 = new ItemPedido(p3, pro5, 2, pro5.getPrecoUnitario(), "#6678", TipoPlataforma.MERCADO_LIVRE, c2);
 
         itemPedidoRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 

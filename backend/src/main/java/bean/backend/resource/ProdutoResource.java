@@ -27,6 +27,25 @@ public class ProdutoResource {
         return ResponseEntity.ok().body(obj);
     }
 
+    @GetMapping(value = "/por-marca/{marcaId}")
+    public ResponseEntity<List<Produto>> findByMarca(@PathVariable Long marcaId) {
+        List<Produto> produtos = service.findByMarca(marcaId);
+        return ResponseEntity.ok().body(produtos);
+    }
+
+    @GetMapping(value = "/por-marca-nome")
+    public ResponseEntity<List<Produto>> findByMarcaName(@RequestParam String nameMarca) {
+        List<Produto> produtos = service.findByMarcaName(nameMarca);
+        return ResponseEntity.ok().body(produtos);
+    }
+
+
+    @GetMapping(value = "/por-codigo-de-barras")
+    public ResponseEntity<Produto> findByCodigoDeBarras(@RequestParam String codigoDeBarras) {
+        Produto produto = service.findByCodigoDeBarras(codigoDeBarras);
+        return ResponseEntity.ok().body(produto);
+    }
+
     @PostMapping
     public ResponseEntity<Produto> insert(@RequestBody Produto obj) {
         obj = service.insert(obj);
