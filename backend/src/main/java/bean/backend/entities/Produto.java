@@ -6,11 +6,11 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 @Entity
 @Table(name = "tb_produto")
@@ -26,6 +26,7 @@ public class Produto implements Serializable {
     private Double precoUnitario;
     private String descricao;
     private String modelo;
+
     private String codigoDeBarras;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT")
@@ -34,7 +35,7 @@ public class Produto implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "tb_produto_fornecedor", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "fornecedor_id"))
-    private Set<Fornecedor> fornecedor = new HashSet<>();
+    private Set<Fornecedor> fornecedores = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "tb_produto_categoria", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
@@ -85,6 +86,14 @@ public class Produto implements Serializable {
         this.precoUnitario = precoUnitario;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public String getModelo() {
         return modelo;
     }
@@ -98,7 +107,16 @@ public class Produto implements Serializable {
     }
 
     public void setCodigoDeBarras(String codigoDeBarras) {
-        this.codigoDeBarras = codigoDeBarras;
+        if (isCodigoDeBarrasValido(codigoDeBarras)) {
+            this.codigoDeBarras = codigoDeBarras;
+        } else {
+            throw new IllegalArgumentException("Código de barras inválido.");
+        }
+    }
+
+    private boolean isCodigoDeBarrasValido(String codigoDeBarras) {
+        Pattern pattern = Pattern.compile("^(\\d{12}|\\d{13})$");
+        return pattern.matcher(codigoDeBarras).matches();
     }
 
     public LocalDate getData() {
@@ -117,14 +135,6 @@ public class Produto implements Serializable {
         this.quantidade = quantidade;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public Set<Categoria> getCategorias() {
         return categorias;
     }
@@ -133,8 +143,8 @@ public class Produto implements Serializable {
         return marcas;
     }
 
-    public Set<Fornecedor> getFornecedor() {
-        return fornecedor;
+    public Set<Fornecedor> getFornecedores() {
+        return fornecedores;
     }
 
     @JsonIgnore

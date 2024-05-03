@@ -3,6 +3,7 @@ package bean.backend.config;
 import bean.backend.entities.*;
 import bean.backend.entities.enums.TipoCliente;
 import bean.backend.entities.enums.TipoFisicoEstadual;
+import bean.backend.entities.enums.TipoPlataforma;
 import bean.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -99,10 +100,10 @@ public class TestConfig implements CommandLineRunner {
         clienteRepository.saveAll(Arrays.asList(c1, c2));
         pedidoRepository.saveAll(Arrays.asList(p1, p2, p3));
 
-        ItemPedido oi1 = new ItemPedido(p1, pro1, 2, pro1.getPrecoUnitario());
-        ItemPedido oi2 = new ItemPedido(p1, pro3, 1, pro3.getPrecoUnitario());
-        ItemPedido oi3 = new ItemPedido(p2, pro3, 2, pro3.getPrecoUnitario());
-        ItemPedido oi4 = new ItemPedido(p3, pro5, 2, pro5.getPrecoUnitario());
+        ItemPedido oi1 = new ItemPedido(p1, pro1, 2, pro1.getPrecoUnitario(), "#2234", TipoPlataforma.MERCADO_LIVRE, c1);
+        ItemPedido oi2 = new ItemPedido(p1, pro3, 1, pro3.getPrecoUnitario(), "#1234", TipoPlataforma.SHOPEE, c2);
+        ItemPedido oi3 = new ItemPedido(p2, pro3, 2, pro3.getPrecoUnitario(), "#4546", TipoPlataforma.SHOPEE, c1);
+        ItemPedido oi4 = new ItemPedido(p3, pro5, 2, pro5.getPrecoUnitario(), "#6678", TipoPlataforma.MERCADO_LIVRE, c2);
 
         itemPedidoRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 

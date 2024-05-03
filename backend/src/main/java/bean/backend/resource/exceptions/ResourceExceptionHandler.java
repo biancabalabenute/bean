@@ -1,4 +1,4 @@
-package bean.backend.resource.exeptions;
+package bean.backend.resource.exceptions;
 
 import bean.backend.services.exceptions.DatabaseException;
 import bean.backend.services.exceptions.ResourceNotFoundException;

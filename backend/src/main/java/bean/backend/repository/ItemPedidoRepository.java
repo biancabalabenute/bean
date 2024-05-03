@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Long> {
+    ItemPedido findByIdVendaPlataforma(String idVendaPlataforma);
 
+    void deleteByIdVendaPlataforma(String idVendaPlataforma);
 }

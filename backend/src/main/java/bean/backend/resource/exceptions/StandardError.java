@@ -1,4 +1,4 @@
-package bean.backend.resource.exeptions;
+package bean.backend.resource.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
