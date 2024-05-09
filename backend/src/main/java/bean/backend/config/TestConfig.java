@@ -46,9 +46,6 @@ public class TestConfig implements CommandLineRunner {
     private TransportadoraRepository transportadoraRepository;
 
     @Autowired
-    private TelefoneRepository telefoneRepository;
-
-    @Autowired
     private MarcaRepository marcaRepository;
 
     @Autowired
@@ -100,10 +97,10 @@ public class TestConfig implements CommandLineRunner {
         clienteRepository.saveAll(Arrays.asList(c1, c2));
         pedidoRepository.saveAll(Arrays.asList(p1, p2, p3));
 
-        ItemPedido oi1 = new ItemPedido(p1, pro1, 2, pro1.getPrecoUnitario(), "#2234", TipoPlataforma.MERCADO_LIVRE, c1);
-        ItemPedido oi2 = new ItemPedido(p1, pro3, 1, pro3.getPrecoUnitario(), "#1234", TipoPlataforma.SHOPEE, c2);
-        ItemPedido oi3 = new ItemPedido(p2, pro3, 2, pro3.getPrecoUnitario(), "#4546", TipoPlataforma.SHOPEE, c1);
-        ItemPedido oi4 = new ItemPedido(p3, pro5, 2, pro5.getPrecoUnitario(), "#6678", TipoPlataforma.MERCADO_LIVRE, c2);
+        ItemPedido oi1 = new ItemPedido(p1, pro1, 2, pro1.getPrecoUnitario(), "#2234", TipoPlataforma.MERCADO_LIVRE);
+        ItemPedido oi2 = new ItemPedido(p1, pro3, 1, pro3.getPrecoUnitario(), "#1234", TipoPlataforma.SHOPEE);
+        ItemPedido oi3 = new ItemPedido(p2, pro3, 2, pro3.getPrecoUnitario(), "#4546", TipoPlataforma.SHOPEE);
+        ItemPedido oi4 = new ItemPedido(p3, pro5, 2, pro5.getPrecoUnitario(), "#6678", TipoPlataforma.MERCADO_LIVRE);
 
         itemPedidoRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
@@ -135,18 +132,8 @@ public class TestConfig implements CommandLineRunner {
         t1.getEnderecos().addAll(Arrays.asList(e3));
         enderecoRepository.saveAll(Arrays.asList(e1, e2, e3));
 
-        Telefone tel1 = new Telefone(null, "6799111222");
-        Telefone tel2 = new Telefone(null, "1699111222");
-        telefoneRepository.saveAll(Arrays.asList(tel1, tel2));
-
-        Fornecedor f1 = new Fornecedor(null, "Shopping China");
-        Fornecedor f2 = new Fornecedor(null, "Shopping West Garden");
-
-        tel1.setFornecedor(f1);
-        tel2.setFornecedor(f2);
-
-        f1.getTelefones().add(tel1);
-        f2.getTelefones().add(tel2);
+        Fornecedor f1 = new Fornecedor(null, "Shopping China", "6799111222");
+        Fornecedor f2 = new Fornecedor(null, "Shopping West Garden", "1699111222");
 
         fornecedorRepository.saveAll(Arrays.asList(f1, f2));
     }

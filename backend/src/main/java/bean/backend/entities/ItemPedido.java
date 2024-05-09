@@ -22,15 +22,9 @@ public class ItemPedido implements Serializable {
     private Integer quantidade;
     private Double preco;
 
-
     private TipoPlataforma plataforma;
 
-
     private String idVendaPlataforma;
-
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
 
     @Transient
     public Fornecedor getFornecedor() {
@@ -40,14 +34,13 @@ public class ItemPedido implements Serializable {
     public ItemPedido() {
     }
 
-    public ItemPedido(Pedido pedido, Produto produto, Integer quantidade, Double preco, String idVendaPlataforma, TipoPlataforma plataforma, Cliente cliente) {
+    public ItemPedido(Pedido pedido, Produto produto, Integer quantidade, Double preco, String idVendaPlataforma, TipoPlataforma plataforma) {
         id.setPedido(pedido);
         id.setProduto(produto);
         this.quantidade = quantidade;
         this.preco = preco;
         this.idVendaPlataforma = idVendaPlataforma;
         this.plataforma = plataforma;
-        this.cliente = cliente;
     }
 
     @JsonIgnore
@@ -101,14 +94,6 @@ public class ItemPedido implements Serializable {
 
     public void setPlataforma(TipoPlataforma plataforma) {
         this.plataforma = plataforma;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     @Override
