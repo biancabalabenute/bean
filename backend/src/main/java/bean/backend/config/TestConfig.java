@@ -107,9 +107,6 @@ public class TestConfig implements CommandLineRunner {
 
         itemPedidoRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
-        Pagamento pag1 = new Pagamento(null, Instant.parse("2023-06-20T21:53:07Z"), p1);
-        p1.setPagamento(pag1);
-
         pedidoRepository.save(p1);
 
         Estado est1 = new Estado(null, "São Paulo");
