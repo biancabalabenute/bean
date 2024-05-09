@@ -62,11 +62,11 @@ public class TestConfig implements CommandLineRunner {
         Marca mar2 = new Marca(null, "Motorola");
         Marca mar3 = new Marca(null, "Apple");
 
-        Produto pro1 = new Produto(null, "TV 4K", 2190.0, "TV Samsung Preta", "Modelo que funciona", "12312312312", LocalDate.parse("2023-06-20"), 1);
-        Produto pro2 = new Produto(null, "Celular Motorola", 2300.0, "Celular com câmera boa", "Modelo XZ123", "45645645645", LocalDate.parse("2023-08-15"), 1);
-        Produto pro3 = new Produto(null, "iPad", 1250.0, "Tablet da Apple", "Modelo Air", "78978978978", LocalDate.parse("2023-07-10"), 1);
-        Produto pro4 = new Produto(null, "Tablet rosa", 1200.0, "Tablet que é da cor rosa", "Modelo Pink Edition", "98765432100", LocalDate.parse("2023-09-01"), 1);
-        Produto pro5 = new Produto(null, "TV de tubo", 100.99, "TV das antigas", "Modelo Retro", "11223344556", LocalDate.parse("2023-05-05"), 1);
+        Produto pro1 = new Produto(null, "TV 4K", 2190.0, "TV Samsung Preta", "12312312312", LocalDate.parse("2023-06-20"), 1);
+        Produto pro2 = new Produto(null, "Celular Motorola", 2300.0, "Celular com câmera boa", "45645645645", LocalDate.parse("2023-08-15"), 1);
+        Produto pro3 = new Produto(null, "iPad", 1250.0, "Tablet da Apple", "78978978978", LocalDate.parse("2023-07-10"), 1);
+        Produto pro4 = new Produto(null, "Tablet rosa", 1200.0, "Tablet que é da cor rosa", "98765432100", LocalDate.parse("2023-09-01"), 1);
+        Produto pro5 = new Produto(null, "TV de tubo", 100.99, "TV das antigas","11223344556", LocalDate.parse("2023-05-05"), 1);
 
 
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));

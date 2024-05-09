@@ -24,7 +24,6 @@ public class Cliente implements Serializable {
     private Long id;
     private String name;
     private String cpfOuCnpj;
-
     private Integer tipo;
     private Integer tipoFisicoEstadual;
     private String inscricaoEstadual;
