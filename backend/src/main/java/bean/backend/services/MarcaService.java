@@ -28,6 +28,12 @@ public class MarcaService {
         return obj.get();
     }
 
+    public Marca findByName(String name) {
+        return repository.findByName(name)
+                .orElseThrow(() -> new ResourceNotFoundException("Marca com o nome '" + name + "' não encontrada"));
+    }
+
+
     public Marca insert(Marca obj) {
         return repository.save(obj);
     }
