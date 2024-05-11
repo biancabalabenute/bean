@@ -26,11 +26,6 @@ public class ItemPedido implements Serializable {
 
     private String idVendaPlataforma;
 
-    @Transient
-    public Fornecedor getFornecedor() {
-        return id.getProduto().getFornecedores().stream().findFirst().orElse(null);
-    }
-
     public ItemPedido() {
     }
 
