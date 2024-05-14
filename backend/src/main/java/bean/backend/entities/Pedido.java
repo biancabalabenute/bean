@@ -6,9 +6,7 @@ import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_pedido")
@@ -73,6 +71,17 @@ public class Pedido implements Serializable {
             soma += x.getSubTotal();
         }
         return soma;
+    }
+
+    public static List<Pedido> buscarVendasPorPeriodo(List<Pedido> pedidos, Instant dataInicial, Instant dataFinal) {
+        List<Pedido> vendasPorPeriodo = new ArrayList<>();
+        for (Pedido pedido : pedidos) {
+            Instant dataPedido = pedido.getInstant();
+            if (dataPedido.isAfter(dataInicial) && dataPedido.isBefore(dataFinal)) {
+                vendasPorPeriodo.add(pedido);
+            }
+        }
+        return vendasPorPeriodo;
     }
 
     @Override

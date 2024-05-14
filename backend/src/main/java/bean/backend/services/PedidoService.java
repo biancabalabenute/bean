@@ -5,6 +5,7 @@ import bean.backend.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,8 +19,13 @@ public class PedidoService {
         return repository.findAll();
     }
 
-    public Pedido findById(Long id){
+    public Pedido findById(Long id) {
         Optional<Pedido> obj = repository.findById(id);
         return obj.get();
+    }
+
+    public List<Pedido> buscarVendasPorPeriodo(Instant dataInicial, Instant dataFinal) {
+        List<Pedido> todosPedidos = repository.findAll();
+        return Pedido.buscarVendasPorPeriodo(todosPedidos, dataInicial, dataFinal);
     }
 }
