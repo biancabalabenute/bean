@@ -13,14 +13,10 @@
   padding: 20px;
   margin: 10px;
   color: #F7F4E8;
-  width: 300px;
+  width: 270px;
   display: flex;
   align-items: center;
+  border-bottom: 20px solid #27a6b2;
 }
 
-.color-blue {
-  background: #27a6b2;
-  width: 300px;
-  height: 20px;
-  margin-top: 10px;
-}
+

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
-import './modalProduto.css';
+import './modalCadastro.css';
 
 function AlertButton() {
     const handleSaveClick = () => {

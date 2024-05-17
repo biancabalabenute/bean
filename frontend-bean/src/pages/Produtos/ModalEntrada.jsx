@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import './modalCadastro.css'; 
-import CadastrarProduto from './CadastrarProduto'; 
+import './modalEntrada.css'; 
+import EntradaProduto from './EntradaProduto'; 
 import './card.css';
 
-const Modal = ({ isOpen, onClose, children }) => {
+const ModalEntrada = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay-register">
-      <div className="modal-register">
+    <div className="modal-overlay-entrada">
+      <div className="modal-entrada">
         <button className="modal-close-button" onClick={onClose}><i className="fa-sharp fa-regular fa-xmark" style={{fontSize:20,}}></i></button>
         {children}
       </div>
@@ -29,18 +29,18 @@ const App = () => {
 
   return (
     <div>
-      <h2 id ="tituloCadastrar" onClick={openModal}>Cadastrar Produto</h2>
-      <i id = "iconCadastrar" className="fa-solid fa-box-open" style={{fontSize: 30}}></i>
-      <Modal isOpen={modalIsOpen} onClose={closeModal}>
-        <h1>Cadastrar Produto</h1>
-        <CadastrarProduto/>
+      <h2 id ="tituloEntrada" onClick={openModal}>Entrada de Produto</h2>
+      <i id = "iconEntrada" className="fa-solid fa-cart-flatbed" style={{fontSize: 30}}></i>
+      <ModalEntrada isOpen={modalIsOpen} onClose={closeModal}>
+        <h1>Entrada de Produto</h1>
+        <EntradaProduto/>
         <div className="buton0">
           <button onClick={closeModal} id="butonCancelar" type="button">Cancelar</button>
         </div>
         <div className="buton2">
           <button onClick={closeModal} id="butonOK" type="button">Ok</button>
         </div>
-      </Modal>
+      </ModalEntrada>
     </div>
   );
 };

@@ -42,7 +42,7 @@ function BuscarProdutos() {
             </ul>
           </div>
         ) : (
-          <p>Nenhum resultado encontrado.</p>
+          <p></p>
         )}
       </div>
     </div>

@@ -7,8 +7,8 @@ const ModalBuscarProduto = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay-product">
-      <div className="modal-product">
+    <div className="modal-overlay-search">
+      <div className="modal-search">
         <button className="modal-close-button" onClick={onClose}><i className="fa-sharp fa-regular fa-xmark" style={{fontSize:20,}}></i></button>
         {children}
       </div>
