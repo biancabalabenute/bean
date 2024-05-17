@@ -10,24 +10,26 @@
 .buton0{
 display: inline-block;
 position: relative;
-top: -20px;
+top: -55px;
 left: 90px;
 }
 
 .buton1{
   display: inline-block;
-  margin-left: 25px;
+  margin-left: -40pxpx;
   position: relative;
-  top: 15px; 
+  top: 10px; 
 }
 .buton2{
   display: inline-block;
   margin-left: 684px;
   position: relative;
-  top: -20px;
+  top: -10px;
   
 }
 #butonLimpar{
+  margin-top: 20px;
+  margin-left: 10px;
   display: inline-block;
   padding: 10px;
   border-radius: 10px;
@@ -40,7 +42,7 @@ left: 90px;
 #butonCancelar{
   display: inline-block;
   padding: 10px;
-  margin-left: 15px;
+  margin-left: -65px;
   border-radius: 8px;
   border-style: none;
   background-color: #b5b5b5;
@@ -49,7 +51,8 @@ left: 90px;
   background-color: #949494;
 }
 #butonSalvar{
-  margin-left: 620px;
+  margin-top:65px;
+  margin-left: 705px;
   padding: 10px;
   border-radius: 8px;
   border-style: none;
@@ -63,6 +66,9 @@ left: 90px;
   margin-left: 15px;
   padding-left: 20px;
   padding-right: 20px;
+  position: relative;
+  top: -45px;
+  
 }
 
 
