@@ -1,0 +1,49 @@
+*{
+  margin: 0;
+  padding:0;
+}
+
+#ContainerVendas{
+  position: absolute;
+  overflow: hidden; 
+    top: 0;
+    left: 0;
+    height: 120vh;
+    width: 100%;
+}
+.caixa{
+  position: relative;
+  top: 0px;
+  left: 200px;
+  margin-bottom: 0px;
+  height: 100%;
+  width: 200vh;
+  background: #D9D9D9;
+  z-index: 1000;
+}
+.navCliente{
+  display: inline-block;
+  padding-left: 20px;
+}
+
+#nomeCliente{
+  padding-left: 100vh;
+}
+
+#finalizarVenda{
+  padding: 20px;
+  background-color: green;
+  color: white;
+  font-size: 15px;
+  text-decoration: solid ;
+  border-style: none;
+  border-radius: 6px;
+  text-decoration: solid;
+  font-weight: bold;
+  position: relative;
+  top: 100px;
+  left: 950px;
+}
+#finalizarVenda:hover{
+  padding:22px ;
+}
