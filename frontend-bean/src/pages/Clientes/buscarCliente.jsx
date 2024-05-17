@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './buscarCliente.css';
+
 function BuscaCliente() {
   const [clientes, setClientes] = useState([]);
   const [busca, setBusca] = useState('');
@@ -10,13 +12,12 @@ function BuscaCliente() {
   const buscarClientes = async () => {
     setLoading(true);
     try {
-      // colocar a URL da  API para buscar clientes
-      const response = await fetch(`sua-api.com/clientes?nome=${busca}`);
-      if (!response.ok) {
-        throw new Error('Falha ao buscar clientes');
-      }
-      const data = await response.json();
-      setResultado(data);
+      const response = await axios.get(`sua-api.com/clientes`, {
+        params: {
+          nome: busca
+        }
+      });
+      setResultado(response.data);
     } catch (error) {
       console.error('Erro ao buscar clientes:', error);
     } finally {
@@ -25,12 +26,14 @@ function BuscaCliente() {
   };
 
   return (
-    <div class ="campo" >
-      <input id = "inpBuscar"style={{width:'600px',  }}
+    <div class ="campo">
+      <input id = "inpBuscar" style={{width:'600px', }}
         type="text"
         placeholder="Digite o nome do cliente"
         value={busca}
-        onChange={e => setBusca(e.target.value)}
+        onChange={e => setBusca(e.
+          
+          target.value)}
       />
       <button id="btn_buscar" onClick={buscarClientes} disabled={loading}>
         {loading ? 'Buscando...' : 'Buscar'}
@@ -50,4 +53,6 @@ function BuscaCliente() {
     </div>
   );
 }
+
 export default BuscaCliente;
+

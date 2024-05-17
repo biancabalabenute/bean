@@ -1,27 +1,26 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './CadastrarCliente.css';
 import Swal from 'sweetalert2';
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.min.css" />;
 <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.all.min.js' ></script>;
 
-  function AlertError(){
+  function AError(){
     const handleSaveClick =()=>{
       Swal.fire({
         icon: "error",
-        title: "Erro ao cadastrar usuário...",
-        footer: '<a href="#">Deseja cadastrar novamente?</a>'
+        title: "Ops! Usuário não foi alterado...",
+        footer: '<a href="#">Tente alterar novamente!</a>'
       });
     }
     return handleSaveClick()
   }
 
 
-  function AlertSucess() {
+  function ASucess() {
   const handleSaveClick = () => {
     Swal.fire({
-     title: "Cadastro feito com sucesso!",
+     title: "Alterações feitas com sucesso!",
      text: " Vancley Vieira",
      icon: "success"
    });
@@ -33,10 +32,14 @@ import Swal from 'sweetalert2';
   );
 };
 
-const CadastrarCliente = () => {
+
+
+
+const EditarCliente = ({ clienteId }) => {
+  const [cliente, setCliente] = useState({});
   const [codigo, setCodigo] = useState('');
-  const [nome, setNome] = useState('');
-  const [data, setData] = useState('');
+  const [name, setName] = useState('');
+  const [date, setDate] = useState('');
   const [endereco, setEndereco] = useState('');
   const [numero, setNumero] = useState('');
   const [bairro, setBairro] = useState('');
@@ -47,19 +50,38 @@ const CadastrarCliente = () => {
   const [cpf, setCpf] = useState('');
   const [inscricaoEstadual, setInscricaoEstadual] = useState('');
   const [fisicoEstadual, setFisicoEstadual] = useState('');
-  const [mensagem, setMensagem] = useState('');
+  useEffect(() => {
+    // Carregar detalhes do cliente quando o componente for montado
+    axios.get(`sua_api/clientes/${clienteId}`)
+      .then(response => {
+        setCliente(response.data);
+        setCodigo(response.data.codigo);
+        setName(response.data.name);
+        setDate(response.data.date);
+        setEndereco(response.data.endereco);
+        setNumero(response.data.numero);
+        setBairro(response.data.bairro);
+        setComplemento(response.data.complemento);
+        setCidade(response.data.cidade);
+        setUf(response.data.uf);
+        setCep(response.data.cep);
+        setCpf(response.data.cpf);
+        setInscricaoEstadual(response.data.inscricaoEstadual);
+        setFisicoEstadual(response.data.fisicoEstadual);
+      })
+      .catch(error => {
+        console.error('Erro ao carregar cliente:', error);
+      });
+  }, [clienteId]);
 
-  
-  
   const handleCodigoChange = (event) => {
     setCodigo(event.target.value);
   };
-
-  const handleNomeChange = (event) => {
-    setNome(event.target.value);
+  const handleNameChange = (event) => {
+    setName(event.target.value);
   };
-  const handleDataChange = (event) => {
-    setData(event.target.value);
+  const handleDateChange = (event) => {
+    setDate(event.target.value);
   };
   const handleEnderecoChange = (event) => {
     setEndereco(event.target.value);
@@ -92,12 +114,13 @@ const CadastrarCliente = () => {
     setFisicoEstadual(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const novoCliente = {
+      ...cliente,
       codigo,
-      nome,
-      data,
+      name,
+      date,
       endereco,
       numero,
       bairro,
@@ -109,23 +132,27 @@ const CadastrarCliente = () => {
       inscricaoEstadual,
       fisicoEstadual
     };
-    
-    try {
-      const response = await axios.post('sua_api/clientes', novoCliente);
-      console.log('Cliente cadastrado com sucesso:', response.data);
-      setMensagem(AlertSucess());
-    } catch (error) {
-      console.error('Erro ao cadastrar cliente:', error);
-      setMensagem( AlertError());
-    }
+
+    // Enviar solicitação para atualizar o cliente no banco de dados
+    axios.put(`sua_api/clientes/${clienteId}`, novoCliente)
+      .then(response => {
+        console.log(ASucess(), response.data);
+        
+        // Aqui você pode redirecionar o usuário para outra página ou fazer qualquer outra ação após a atualização bem-sucedida
+      })
+      .catch(error => {
+        console.error(AError(), error);
+      });
   };
 
   return (
-    <div className='janela'>
+    <div>
+      <h1>Editar Cliente</h1>
+      (clienteId):
       <form onSubmit={handleSubmit}>
       <input style={{width:'120px'}} class ="inputs" placeholder="Codigo" type="number" value={codigo} onChange={handleCodigoChange} />
-          <input id="nome" class ="inputs" type="text" placeholder="Nome"  value={nome} onChange={handleNomeChange} />
-          <input  id="codigo" style={{width: '150px'}} class ="inputs" placeholder="Data"type="datetime-local" value={data} onChange={handleDataChange} />
+          <input id="nome" class ="inputs" type="text" placeholder="Nome"  value={name} onChange={handleNameChange} />
+          <input  id="codigo" style={{width: '150px'}} class ="inputs" placeholder="Data"type="datetime-local" value={date} onChange={handleDateChange} />
           <input class ="inputs" placeholder="Endereco" type="text" value={endereco} onChange={handleEnderecoChange} />
           <input style={{width:'65px'}} class ="inputs"  placeholder="Numero" type="number" value={numero} onChange={handleNumeroChange} />
           <input style={{width:'205px'}} class ="inputs" placeholder="Bairro" type="text" value={bairro} onChange={handleBairroChange} />
@@ -136,12 +163,14 @@ const CadastrarCliente = () => {
           <input style={{width:'150px'}} class ="inputs" placeholder="CPF" type="number" value={cpf} onChange={handleCpfChange} />
           <input style={{width:"200px"}} class ="inputs" placeholder='InscricaoEstadual' type="text" value={inscricaoEstadual} onChange={handleInscricaoEstadualChange} />
           <input style={{width:"395px"}}  class ="inputs" placeholder='FisicoEstadual' type="text" value={fisicoEstadual} onChange={handleFisicoEstadualChange} />
-          <button id = "butonSalvar" type="submit">Salvar</button>
-
+        <button style={{marginTop:'100px', marginLeft:'780px'}} id="butonSalvar" type="submit">Salvar</button>
       </form>
-      {mensagem && <p>{mensagem}</p>}
+
     </div>
+
+    
+
   );
 };
 
-export default CadastrarCliente;
+export default EditarCliente;
