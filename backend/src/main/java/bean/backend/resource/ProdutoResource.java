@@ -39,7 +39,6 @@ public class ProdutoResource {
         return ResponseEntity.ok().body(produtos);
     }
 
-
     @GetMapping(value = "/por-codigo-de-barras")
     public ResponseEntity<Produto> findByCodigoDeBarras(@RequestParam String codigoDeBarras) {
         Produto produto = service.findByCodigoDeBarras(codigoDeBarras);

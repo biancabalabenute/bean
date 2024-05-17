@@ -29,6 +29,13 @@ public class MarcaResource {
         return ResponseEntity.ok().body(obj);
     }
 
+    @GetMapping(value = "/name/{name}")
+    public ResponseEntity<Marca> findByName(@PathVariable String name) {
+        Marca obj = service.findByName(name);
+        return ResponseEntity.ok().body(obj);
+    }
+
+
     @PostMapping
     public ResponseEntity<Marca> insert(@RequestBody Marca obj) {
         obj = service.insert(obj);

@@ -17,15 +17,15 @@ public class Fornecedor implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "fornecedor")
-    private List<Telefone> telefones = new ArrayList<>();
+    private String telefone;
 
     public Fornecedor() {
     }
 
-    public Fornecedor(Long id, String name) {
+    public Fornecedor(Long id, String name, String telefone) {
         this.id = id;
         this.name = name;
+        this.telefone = telefone;
     }
 
     public Long getId() {
@@ -43,15 +43,6 @@ public class Fornecedor implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
-    public List<Telefone> getTelefones() {
-        return telefones;
-    }
-
-    public void setTelefones(List<Telefone> telefones) {
-        this.telefones = telefones;
-    }
-
 
     @Override
     public boolean equals(Object o) {

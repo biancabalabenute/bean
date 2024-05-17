@@ -24,7 +24,6 @@ public class Produto implements Serializable {
     private Long id;
     private String name;
     private Double precoUnitario;
-    private String descricao;
     private String modelo;
 
     private String codigoDeBarras;
@@ -51,11 +50,10 @@ public class Produto implements Serializable {
     public Produto() {
     }
 
-    public Produto(Long id, String name, Double precoUnitario, String descricao, String modelo, String codigoDeBarras, LocalDate data, Integer quantidade) {
+    public Produto(Long id, String name, Double precoUnitario, String modelo, String codigoDeBarras, LocalDate data, Integer quantidade) {
         this.id = id;
         this.name = name;
         this.precoUnitario = precoUnitario;
-        this.descricao = descricao;
         this.modelo = modelo;
         this.codigoDeBarras = codigoDeBarras;
         this.data = data;
@@ -84,14 +82,6 @@ public class Produto implements Serializable {
 
     public void setPrecoUnitario(Double precoUnitario) {
         this.precoUnitario = precoUnitario;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public String getModelo() {
