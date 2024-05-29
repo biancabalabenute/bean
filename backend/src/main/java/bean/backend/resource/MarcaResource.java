@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/marcas")
+@CrossOrigin("http://localhost:3000/marca")
 public class MarcaResource {
 
     @Autowired

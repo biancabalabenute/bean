@@ -35,7 +35,6 @@ public class FornecedorService {
     public void delete(Long id) {
         try {
             repository.deleteById(id);
-
         } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException(id);
         } catch (DataIntegrityViolationException e) {
@@ -43,17 +42,19 @@ public class FornecedorService {
         }
     }
 
+
     public Fornecedor update(Long id, Fornecedor obj) {
         try {
             Fornecedor entity = repository.getReferenceById(id);
             updateData(entity, obj);
             return repository.save(entity);
-        } catch (EntityNotFoundException e){
+        } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException(id);
         }
     }
 
     private void updateData(Fornecedor entity, Fornecedor obj) {
         entity.setName(obj.getName());
+        entity.setTelefone(obj.getTelefone());
     }
 }
