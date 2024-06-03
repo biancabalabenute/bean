@@ -43,11 +43,12 @@ public class CategoriaService {
     }
 
     public Categoria update(Long id, Categoria obj) {
-        try {
-            Categoria entity = repository.getOne(id);
+        Optional<Categoria> optionalEntity = repository.findById(id);
+        if (optionalEntity.isPresent()) {
+            Categoria entity = optionalEntity.get();
             updateData(entity, obj);
             return repository.save(entity);
-        } catch (EntityNotFoundException e){
+        } else {
             throw new ResourceNotFoundException(id);
         }
     }
