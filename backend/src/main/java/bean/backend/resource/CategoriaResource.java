@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/categorias")
+@CrossOrigin("http://localhost:3000/categoria")
 public class CategoriaResource {
 
     @Autowired
@@ -47,5 +48,4 @@ public class CategoriaResource {
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
     }
-
 }

@@ -1,0 +1,92 @@
+APOS CRIAR A TABELA NO BANCO DE DADOS, EXECUTE O BACKEND PARA A CRIAÇÃOD DAS TABELAS, 
+EM SEGUIDA EXECUTE ESSES COMANDOS PARA INICIAR O BANCO DE DADOS COM ALGUNS VALORES
+
+
+-- TABELA ESTADO 
+
+INSERT INTO tb_estado(nome) VALUES ('SP');
+INSERT INTO tb_estado(nome) VALUES ('MS');
+INSERT INTO tb_estado(nome) VALUES ('GO');
+
+
+-- TABELA CIDADE 
+
+INSERT INTO tb_cidade(nome, estado_id) VALUES ('Campinas', 1);
+INSERT INTO tb_cidade(nome, estado_id) VALUES ('Campo Grande', 2);
+INSERT INTO tb_cidade(nome, estado_id) VALUES ('Goiania', 3);
+
+
+-- TABELA MARCA 
+
+INSERT INTO tb_marca(name) VALUES ('Samsung');
+INSERT INTO tb_marca(name)  VALUES ('Apple');
+INSERT INTO tb_marca(name)  VALUES ('Motorola');
+
+
+-- TABELA CATEGORIA 
+
+INSERT INTO tb_categoria(name) VALUES ('Celular');
+INSERT INTO tb_categoria(name) VALUES ('Fones de Ouvido');
+INSERT INTO tb_categoria(name) VALUES ('Tablet');
+
+
+-- TABELA FORNECEDOR 
+
+INSERT INTO tb_fornecedor(name, telefone) VALUES ('Shopping China', '111111111');
+INSERT INTO tb_fornecedor(name, telefone) VALUES ('Shopping West Garden', '222222222');
+INSERT INTO tb_fornecedor(name, telefone) VALUES ('Compre Bem', '3333333333');
+
+
+-- TABELA PRODUTO 
+
+INSERT INTO tb_produto(name, preco_unitario, codigo_de_barras, data, modelo, quantidade) VALUES ('S24', 2190.0, '6666666666', '2023-06-20', 'Modelo de 64GB', 1);
+INSERT INTO tb_produto(name, preco_unitario, codigo_de_barras, data, modelo, quantidade) VALUES ('iPhone 15', 6190.0, '4444444444', '2023-06-20', 'Pro Max 128GB', 2);
+INSERT INTO tb_produto(name, preco_unitario, codigo_de_barras, data, modelo, quantidade) VALUES ('Tablet Azul', 3000.0, '2222222222', '2023-06-20', 'Modelo de 64GB', 4);
+
+
+-- TABELA PRODUTO CATEGORIA 
+
+INSERT INTO tb_produto_categoria (produto_id, categoria_id) VALUES (1, 1);
+INSERT INTO tb_produto_categoria (produto_id, categoria_id) VALUES (2, 1);
+INSERT INTO tb_produto_categoria (produto_id, categoria_id) VALUES (3, 3);
+
+
+-- TABELA PRODUTO MARCA 
+
+INSERT INTO tb_produto_marca (produto_id, marca_id) VALUES (1, 1);
+INSERT INTO tb_produto_marca (produto_id, marca_id) VALUES (2, 2);
+INSERT INTO tb_produto_marca (produto_id, marca_id) VALUES (3, 3);
+
+
+-- TABELA CLIENTE 
+
+INSERT INTO tb_cliente (name, cpf_ou_cnpj, data_cadastro, inscricao_estadual,  tipo, tipo_fisico_estadual) VALUES ('José', '123456789', '2023-03-20T17:53:07Z', '111111111', 1, 1);
+INSERT INTO tb_cliente (name, cpf_ou_cnpj, data_cadastro, inscricao_estadual, tipo, tipo_fisico_estadual) VALUES ('Maria', '987654321', '2023-04-10T19:53:07Z','222222222', 1, 1);
+
+
+-- TABELA PEDIDO 
+
+INSERT INTO tb_pedido (instant, client_id) VALUES ('2023-06-20T19:53:07Z', 1);
+INSERT INTO tb_pedido (instant, client_id) VALUES ('2023-07-21T03:42:10Z', 1);
+INSERT INTO tb_pedido (instant, client_id) VALUES ('2023-02-22T15:21:22Z', 2);
+
+
+-- TABELA ITEM PEDIDO 
+
+INSERT INTO tb_item_pedido (pedido_id, produto_id, quantidade, preco, id_venda_plataforma, plataforma) VALUES (1, 1, 2, 2190.0, '#2234', 1);
+INSERT INTO tb_item_pedido (pedido_id, produto_id, quantidade, preco, id_venda_plataforma, plataforma) VALUES (2, 2, 1, 1250.0, '#1234', 1);
+INSERT INTO tb_item_pedido (pedido_id, produto_id, quantidade, preco, id_venda_plataforma, plataforma) VALUES (3, 3, 2, 1250.0, '#4546', 1);
+
+
+-- TABELA TRANSPORTADORA 
+
+INSERT INTO tb_transportadora (nome) VALUES ('Correios');
+
+
+-- TABELA ENDERECO 
+
+INSERT INTO tb_endereco (logradouro, numero, complemento, bairro, cep, cliente_id, cidade_id, transportadora_id) VALUES ('Rua Flores', '300', 'Casa', 'Jardim', '38220834', 1, 2, NULL);
+INSERT INTO tb_endereco (logradouro, numero, complemento, bairro, cep, cliente_id, cidade_id, transportadora_id) VALUES ('Rua Da Floresta', '120', 'Casa de madeira', 'Centro', '123123', 2, 3, NULL);
+INSERT INTO tb_endereco (logradouro, numero, complemento, bairro, cep, cliente_id, cidade_id, transportadora_id) VALUES ('Rua Do Centro', '1000', 'Predio amarelo', 'Centro', '123456', NULL, 3, 1);
+
+

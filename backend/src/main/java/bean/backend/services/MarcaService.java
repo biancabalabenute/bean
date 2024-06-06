@@ -49,11 +49,12 @@ public class MarcaService {
     }
 
     public Marca update(Long id, Marca obj) {
-        try {
-            Marca entity = repository.getOne(id);
+        Optional<Marca> optionalEntity = repository.findById(id);
+        if (optionalEntity.isPresent()) {
+            Marca entity = optionalEntity.get();
             updateData(entity, obj);
             return repository.save(entity);
-        } catch (EntityNotFoundException e) {
+        } else {
             throw new ResourceNotFoundException(id);
         }
     }
@@ -61,4 +62,5 @@ public class MarcaService {
     private void updateData(Marca entity, Marca obj) {
         entity.setName(obj.getName());
     }
+
 }

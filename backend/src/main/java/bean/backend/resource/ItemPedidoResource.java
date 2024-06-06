@@ -18,6 +18,12 @@ public class ItemPedidoResource {
     @Autowired
     private ItemPedidoService itemPedidoService;
 
+    @GetMapping
+    public ResponseEntity<List<ItemPedido>> findAll() {
+        List<ItemPedido> list = itemPedidoService.findAll();
+        return ResponseEntity.ok().body(list);
+    }
+
     @DeleteMapping("/venda/{idVendaPlataforma}")
     public ResponseEntity<Void> deletarItemPedidoPorIdVenda(@PathVariable String idVendaPlataforma) {
         itemPedidoService.deletarItemPedidoPorIdVenda(idVendaPlataforma);
