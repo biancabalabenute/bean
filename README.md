@@ -47,3 +47,7 @@ npm start
 
 Com isso o arquivo começará rodar web, voce tambem pode acessar pela URL: http://localhost:3000/home.
 Caso já tenha usado arquivo de inserts-BD poderá ver alguns dados no frontend. 
+
+## Links úteis:
+**Figma:** https://www.figma.com/design/bUWz5D5rMSSMVMapPzmpoG/BEAN?node-id=8-52&t=9q2gj58zny0n7B23-0 <br/>
+**Documentação:** 
