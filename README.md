@@ -11,10 +11,17 @@ Este é um projeto para a disciplina de Laboratório de Banco de Dados. Ele foi 
 - Node.js
 - npm (gerenciador de pacotes do Node.js)
 
-## IDEs usadas
-- Intellij
-- VSCode
-  
+## Ambiente de desenvolvimento usado
+Este projeto foi desenvolvido utilizando as seguintes ferramentas:
+
+- **IntelliJ IDEA**: Uma poderosa IDE para desenvolvimento Java, utilizada para escrever, depurar e executar o código do projeto.
+- **VS Code**:Conhecido por sua leveza, interface intuitiva e extensibilidade, proporcionando uma experiência de desenvolvimento eficiente e produtiva.
+- **Maven**: Ferramenta de automação de compilação utilizada para gerenciar as dependências do projeto e realizar builds.
+- **PostgreSQL**: Banco de dados relacional utilizado para persistência de dados. Recomenda-se a utilização do pgAdmin ou de outras ferramentas de administração para gerenciar o banco de dados.
+- **Postman**: Uma plataforma de colaboração para desenvolvimento de APIs. Utilizado para testar endpoints e realizar requisições HTTP durante o desenvolvimento da aplicação.
+
+Certifique-se de ter essas ferramentas instaladas e configuradas corretamente para uma experiência de desenvolvimento sem problemas.
+
 ## Como baixar
 Primeiro voce precisa clonar o repositorio:
 ```bash
